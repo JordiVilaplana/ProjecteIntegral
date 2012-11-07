@@ -1,0 +1,86 @@
+<?php 
+	function LimpiaResultados(&$fila){
+		foreach ($fila as $campo => $valor)
+			if(is_string($valor) === true)
+			$fila[$campo] = stripslashes($fila[$campo]);
+	}
+
+	function CompruebaErrorConexionMySQL($mensaje){
+		if (mysqli_connect_errno() != 0){
+			echo $mensaje.' :'.mysqli_connect_error();
+			exit();
+		}
+	}
+
+	function CompruebaErrorMySQL($mensaje, $conexion){
+		if (mysqli_errno($conexion) != 0){
+			echo $mensaje.' :'.mysqli_error($conexion);
+			mysqli_close($conexion);
+			exit();
+		}
+	}
+
+if (isset($_REQUEST['alta'])) {
+	@ $db = mysqli_connect('localhost', 'root', 'root');
+	CompruebaErrorConexionMySQL('Error conectando con la bd');
+	mysqli_select_db($db, 'project');
+	CompruebaErrorMySQL('Error seleccionando la BD', $db);
+
+	mysqli_query($db,"insert into users (login,password,userType,email,nombre,apellidos,nacimiento) values ('".$_REQUEST['login']."','".$_REQUEST['password']."','".$_REQUEST['tipousuario']."','".$_REQUEST['email']."','".$_REQUEST['nombre']."','".$_REQUEST['apellidos']."','".$_REQUEST['bday']."')");
+	CompruebaErrorMySQL('Error realizando el alta', $db);
+
+	if (isset($_REQUEST['address'])) {
+		mysqli_query($db,"UPDATE users SET direccion = '".$_REQUEST['address']."' WHERE login = '".$_REQUEST['login']."' AND password = '".$_REQUEST['password']."'");
+		CompruebaErrorMySQL('Error realizando el alta', $db);
+	}
+
+	if (isset($_REQUEST['phone'])) {
+		mysqli_query($db,"UPDATE users SET telefono = '".$_REQUEST['phone']."' WHERE login = '".$_REQUEST['login']."' AND password = '".$_REQUEST['password']."'");
+		CompruebaErrorMySQL('Error realizando el alta', $db);
+	}
+
+	if (is_uploaded_file ($_FILES['photo']['tmp_name'])) {
+		$namephoto = $_FILES['photo']['name'];
+		$timeid = time();
+		$photo = $timeid . "-" . $namephoto;
+		mysqli_query($db,"UPDATE users SET photo = '".$photo."' WHERE login = '".$_REQUEST['login']."' AND password = '".$_REQUEST['password']."'");
+		CompruebaErrorMySQL('Error realizando el alta', $db);
+		move_uploaded_file ($_FILES['photo']['tmp_name'], "../images/" . $photo);
+	}
+
+	mysqli_close($db);
+
+	$URL="./profile.php?id=".$_POST['login']; 
+	header ("Location: $URL"); 
+} else {
+	require('../aspecto/libreria.inc');
+	drawHead('Nuevo usuario');
+	include('../aspecto/cabecera.html');
+	dibujaMenu();
+
+?>
+<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+	<p>Nombre de usuario: <INPUT TYPE="text" NAME="login" SIZE="20" MAXLENGTH="12" required></p>
+	<p>Contraseña: <INPUT TYPE="password" NAME="password" SIZE="20" MAXLENGTH="24" required></p>
+	<p>Tipo de usuario:
+		<select name="tipousuario">
+			<option value="user" selected>Usuario</option>
+			<option value="admin">Administrador</option>
+		</select>
+	</p>
+	<p>Correo Electrónico: <INPUT TYPE="email" NAME="email" SIZE="20" MAXLENGTH="32" required></p>
+	<p>Nombre: <INPUT TYPE="text" NAME="nombre" SIZE="20" MAXLENGTH="16" required></p>
+	<p>Apellidos: <INPUT TYPE="text" NAME="apellidos" SIZE="20" MAXLENGTH="24" required></p>
+	<p>Fecha de nacimiento: <INPUT TYPE="date" NAME="bday" required></p>
+	<p>Dirección: <br>
+		<textarea name="address" rows="3" cols="50"></textarea>
+	</p>
+	<p>Teléfono (fijo/móvil): <INPUT TYPE="text" NAME="phone" SIZE="20" MAXLENGTH="9"></p>
+	<p>Foto: 
+		<INPUT TYPE="HIDDEN" NAME="MAX_FILE_SIZE" VALUE="102400">
+		<INPUT TYPE="file" name="photo" accept="image/*"></p>
+	<p><INPUT TYPE="submit" NAME="alta" VALUE="Alta"><p>
+</form>
+<?php
+	include('../aspecto/pie.html');
+}?>
