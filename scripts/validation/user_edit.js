@@ -1,5 +1,16 @@
+/**
+* @fileOverview Validació dels distints formularis de modificació de les dades dels usuaris.
+* @name user_edit.js
+* @author Jordi Vilaplana
+*/
+
+/** Variable on es recollirà l'objecte formulari. */
 var form = null;
 
+/**
+* Valida que la contrasenya siga correcta dins dels seus paràmetres.
+* @return true si la contrasenya és correcta, false si no
+*/
 function pass() {
 	var result = document.getElementById("pass_erlog");
 	var field = form.pass.value;
@@ -13,6 +24,10 @@ function pass() {
 	}
 }
 
+/**
+* Valida que la contrasenya siga correcta dins dels seus paràmetres.
+* @return true si la contrasenya és correcta, false si no
+*/
 function oldPass() {
 	var result = document.getElementById("oldPass_erlog");
 	var field = form.oldPass.value;
@@ -26,6 +41,10 @@ function oldPass() {
 	}
 }
 
+/**
+* Valida que la contrasenya siga correcta dins dels seus paràmetres.
+* @return true si la contrasenya és correcta, false si no
+*/
 function newPass() {
 	var result = document.getElementById("newPass_erlog");
 	var field = form.newPass.value;
@@ -39,6 +58,10 @@ function newPass() {
 	}
 }
 
+/**
+* Valida que la contrasenya siga correcta dins dels seus paràmetres.
+* @return true si la contrasenya és correcta, false si no
+*/
 function repeat() {
 	var result = document.getElementById("repeat_erlog");
 	var field = form.newPass.value;
@@ -53,6 +76,10 @@ function repeat() {
 	}
 }
 
+/**
+* Valida que l'email siga correcte dins dels seus paràmetres.
+* @return true si l'email és correcte, false si no
+*/
 function email() {
 	var result = document.getElementById("email_erlog");
 	var field = form.email.value;
@@ -66,6 +93,10 @@ function email() {
 	}
 }
 
+/**
+* Valida que el nom de la persona física siga correcte dins dels seus paràmetres.
+* @return true si el nom de la persona física és correcte, false si no
+*/
 function nombre() {
 	var result = document.getElementById("nombre_erlog");
 	var field = form.nombre.value;
@@ -79,6 +110,10 @@ function nombre() {
 	}
 }
 
+/**
+* Valida que els cognoms de la persona física siguen correctes dins dels seus paràmetres.
+* @return true si els cognoms de la persona física són correctes, false si no
+*/
 function apellidos() {
 	var result = document.getElementById("apellidos_erlog");
 	var field = form.apellidos.value;
@@ -92,6 +127,10 @@ function apellidos() {
 	}
 }
 
+/**
+* Valida que la data de naixement de la persona física siga correcta dins dels seus paràmetres.
+* @return true si la data de naixement de la persona física és correcta, false si no
+*/
 function bday() {
 	var result = document.getElementById("bday_erlog");
 	var field = new Date(form.bday.value);
@@ -106,6 +145,10 @@ function bday() {
 	}
 }
 
+/**
+* Valida que el telèfon de la persona física siga correcte dins dels seus paràmetres.
+* @return true si el telèfon de la persona física és correcte, false si no
+*/
 function phone() {
 	var result = document.getElementById("phone_erlog");
 	var field = form.phone.value;
@@ -119,6 +162,10 @@ function phone() {
 	}
 }
 
+/**
+* Valida i recull la validació de tots els camps competents per a la modificació de les dades personals de l'usuari.
+* @return true si tots els paràmetres verificats són correctes, false si no
+*/
 function val_datos() {
 	form = document.forms.edit_data;
 	var remail = email();
@@ -129,6 +176,10 @@ function val_datos() {
 	return (remail && rnombre && rapellidos && rbday && rphone);
 }
 
+/**
+* Valida i recull la validació de tots els camps competents per a la modificació de la contrasenya de l'usuari.
+* @return true si tots els paràmetres verificats són correctes, false si no
+*/
 function val_pass() {
 	form = document.forms.edit_pass;
 	var rold = oldPass();
@@ -137,6 +188,10 @@ function val_pass() {
 	return (rold && rnew && rrepeat);
 }
 
+/**
+* Valida i recull la validació de tots els camps competents per a l'esborrat de l'usuari.
+* @return true si tots els paràmetres verificats són correctes, false si no
+*/
 function val_del() {
 	form = document.forms.del_user;
 	var rpass = pass();

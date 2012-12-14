@@ -1,3 +1,8 @@
+/**
+* @fileOverview Crea l'animació del menú d'usuari al desplegar-se de la capçalera.
+* @name usermenu.js
+* @author Equip de jQueryUI, adaptat per Jordi Vilaplana.
+*/
 $(function() {
 	var pincha = false;
 

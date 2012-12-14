@@ -1,3 +1,8 @@
+/**
+* @fileOverview Validació del formulari per al registre de cites (incomplet).
+* @name date_registry.js
+* @author Jordi Vilaplana
+*/
 var form = null;
 var time = null;
 

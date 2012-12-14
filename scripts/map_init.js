@@ -1,3 +1,8 @@
+/**
+* @fileOverview Inicialitza la interfície de la API de Google Maps per a la pàgina d'inini.
+* @name map_init.js
+* @author Google, amb modificacions per Jordi Vilaplana
+*/
 window.onload = function() {
 	var myLatlng = new google.maps.LatLng(38.823805,-0.60295);
 	var mapOptions = {
@@ -24,7 +29,7 @@ window.onload = function() {
 	var marker = new google.maps.Marker({
 		position: myLatlng,
 		map: map,
-		title: 'Uluru (Ayers Rock)'
+		title: 'stile Peluqueros'
 	});
 	google.maps.event.addListener(marker, 'click', function() {
 		infowindow.open(map,marker);
