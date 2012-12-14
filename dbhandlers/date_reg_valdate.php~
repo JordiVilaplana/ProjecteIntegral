@@ -1,0 +1,77 @@
+<?php 
+	require('./dbcon.inc');
+
+	$consulta = "select * from no_service where fecha = '".$_GET['fecha']."'";
+
+	$resultado = mysqli_query($db, $consulta);
+	CompruebaErrorMySQL('Error realizando la consulta', $db);
+	assert($resultado !== false);
+	$num = mysqli_num_rows($resultado);
+	if (mysqli_num_rows($resultado) > 0){
+		echo 'Lo sentimos, pero no atendemos citas en esta fecha.';
+	} else {
+		echo '';
+	}
+
+	mysqli_free_result($resultado);
+	mysqli_close($db);
+
+/*function LimpiaResultados($objeto){
+	foreach ($objeto as $atributo => $valor)
+		if(is_string($objeto->$atributo) === true)
+			$objeto->$atributo = stripslashes($objeto->$atributo);
+}
+
+class ExcepcionEnTransaccion extends Exception{
+	public function __construct(){}
+}
+
+$resultado;
+function getDBObjects($consulta){
+echo 't0';
+	try{
+echo 't1';
+		$db = new mysqli('localhost', 'root', 'root');
+		if (mysqli_connect_errno() != 0)
+			throw new Exception('Error conectando:'.mysqli_connect_error(), mysqli_connect_errno());
+			
+echo 't2';
+		$db->select_db('project');
+		if ($db->errno != 0)
+			throw new Exception('Error seleccionando bd:'.$db->error, $db->errno);
+				
+echo $consulta;
+		$resultado = $db->query($consulta);
+		if ($db->errno != 0)
+			throw new Exception('Error realizando consulta:'.$db->error, $db->errno);
+		assert($resultado !== false);
+		
+echo 'inocente';
+//		if ($resultado->num_rows > 0) echo 'Lo sentimos, pero no atendemos citas en esta fecha.';
+//		else echo 'asd';
+		return $resultado;
+				
+		$db->close(); 
+	}catch (Exception $e){
+		echo $e->getMessage();
+		if (mysqli_connect_errno() == 0)
+			$db->close();
+		exit();
+	}
+}
+
+//getDBObjects("select * from no_service where fecha like ".$_GET['fecha']);
+$fecha = getDBObjects("select * from no_service where fecha = '".$_GET['fecha']."'");
+	if ($fecha->num_rows > 0) echo 'Lo sentimos, pero no atendemos citas en esta fecha.';
+	else echo 'asd';
+
+switch ($_GET['validate']) {
+	case 'fecha';
+		if ($fecha->num_rows > 0) echo 'Lo sentimos, pero no atendemos citas en esta fecha.';
+		else echo '';
+		break;
+}
+
+$resultado->free();
+$fecha->free();*/
+?>

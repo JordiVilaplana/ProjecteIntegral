@@ -1,0 +1,10 @@
+<?php 
+switch ($_POST['action']) {
+	case "reg":
+		break;
+	case "edit":
+		break;
+	case "del":
+		break;
+}
+?>

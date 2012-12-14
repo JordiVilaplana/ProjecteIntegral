@@ -1,0 +1,16 @@
+<?php
+if (isset($_GET['action'])) {
+	switch ($_GET['action']) {
+		case "login":
+		case "registry":
+		case "list":
+		case "profile":
+		case "edit":
+		case "delete":
+			require("./access/users/".$_GET['action'].".php");
+			break;
+		default:
+			header("Location: ./?page=home");
+	}
+} else header("Location: ./?page=home");
+?>

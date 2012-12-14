@@ -1,0 +1,31 @@
+<?php 
+	require('./scripts/dbhandlers.inc');
+	require('./scripts/libreria.inc');
+
+	drawHead($tservices);
+
+	echo '<h2 class="titulo">'.$tservices_tlist.'</h2>';
+
+	$consulta = "select id, tiempo, precio from services";
+	$resultado = mysqli_query($db, $consulta);
+	CompruebaErrorMySQL('Error realizando la consulta', $db);
+	assert($resultado !== false);
+
+	if (mysqli_num_rows($resultado) > 0){
+		echo '<table>';
+		echo '<tr><th>'.$tfields_services_name.'</th><th>'.$tfields_services_time.
+				'</th><th>'.$tfields_services_price.'</th></tr>';
+		while ($fila = mysqli_fetch_assoc($resultado)){
+			LimpiaResultados($fila);
+			echo '<tr><td>'.getServNames($fila['id']).'</td><td>'.$fila['tiempo'].'</td><td>'.
+					$fila['precio'].'€</td></tr>';
+		}
+		echo '</table>';
+		echo '<br/><p>'.$tservices_iva.'</p>';
+	}
+
+	drawFoot();
+
+	mysqli_free_result($resultado);
+	mysqli_close($db);
+?>

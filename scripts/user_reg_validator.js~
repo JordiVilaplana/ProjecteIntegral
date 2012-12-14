@@ -1,0 +1,102 @@
+var b_err = "";
+var frmval  = new Validator("userreg");
+var lang = document.getElementsByTagName("html")[0].lang;
+
+frmval.EnableOnPageErrorDisplay();
+frmval.EnableMsgsTogether();
+
+switch (lang) {
+	case "ca":
+b_err = "ERROR: La data de naixement no pot ser posterior al dia de hui.";
+
+frmval.addValidation("login","req","ERROR: No s'ha escrit un nom d'usuari.");
+frmval.addValidation("login","maxlen=12","ERROR: No pot excedir els 12 caràcters.");
+frmval.addValidation("login","minlen=4","ERROR: No pot tindre menys de 4 caràcters.");
+
+frmval.addValidation("password","req","ERROR: No s'ha escrit una contrasenya.");
+frmval.addValidation("password","maxlen=24","ERROR: No pot excedir els 24 caràcters.");
+frmval.addValidation("password","minlen=6","ERROR: No pot tindre menys de 6 caràcters.");
+frmval.addValidation("repeat","eqelmnt=password","ERROR: Les contrasenyes han de coincidir.");
+
+frmval.addValidation("email","req","ERROR: No s'ha escrit un correu electrònic.");
+frmval.addValidation("email","maxlen=32","ERROR: No pot excedir els 32 caràcters.");
+frmval.addValidation("email","email","ERROR: No s'ha escrit un correu electrònic vàlid.");
+
+frmval.addValidation("nombre","req","ERROR: No s'ha escrit el nom.");
+frmval.addValidation("nombre","maxlen=16","ERROR: No pot excedir els 16 caràcters.");
+frmval.addValidation("nombre","alpha_s","ERROR: Sols pot contindre caràcters alfabètics i espais.");
+
+frmval.addValidation("apellidos","req","ERROR: No s'han escrit els cognoms.");
+frmval.addValidation("apellidos","maxlen=24","ERROR: No pot excedir els 24 caràcters.");
+frmval.addValidation("apellidos","alpha_s","ERROR: Sols pot contindre caràcters alfabètics i espais.");
+
+frmval.addValidation("bday","req","ERROR: No s'ha introduït la data de naixement.");
+frmval.addValidation("bday","regexp=/^(19|20)\d\d[- \/.](0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])$/","ERROR: No s'ha introduït una data de naixement vàlida.");
+
+frmval.addValidation("phone","num","ERROR: Sols pot contindre caràcters numèrics.");
+frmval.addValidation("phone","maxlen=9","ERROR: Ha de tindre exàctament 9 caràcters.");
+frmval.addValidation("phone","minlen=9","ERROR: Ha de tindre exàctament 9 caràcters.");
+		break;
+	case "es":
+b_err = "ERROR: La fecha de nacimiento no puede ser posterior al día de hoy.";
+
+frmval.addValidation("login","req","ERROR: No se ha escrito un nombre de usuario.");
+frmval.addValidation("login","maxlen=12","ERROR: No puede exceder los 12 carácteres.");
+frmval.addValidation("login","minlen=4","ERROR: No puede tener menos de 4 carácteres.");
+
+frmval.addValidation("password","req","ERROR: No se ha escrito una contraseña.");
+frmval.addValidation("password","maxlen=24","ERROR: No puede exceder los 24 carácteres.");
+frmval.addValidation("password","minlen=6","ERROR: No puede tener menos de 6 carácteres.");
+frmval.addValidation("repeat","eqelmnt=password","ERROR: Las contraseñas deben coincidir.");
+
+frmval.addValidation("email","req","ERROR: No se ha escrito un correo electrónico.");
+frmval.addValidation("email","maxlen=32","ERROR: No puede exceder los 32 carácteres.");
+frmval.addValidation("email","email","ERROR: No se ha escrito un correo electrónico válido.");
+
+frmval.addValidation("nombre","req","ERROR: No se ha escrito el nombre.");
+frmval.addValidation("nombre","maxlen=16","ERROR: No puede exceder los 16 carácteres.");
+frmval.addValidation("nombre","alpha_s","ERROR: Sólo puede tener carácteres alfabéticos y espacios.");
+
+frmval.addValidation("apellidos","req","ERROR: No se han escrito los apellidos.");
+frmval.addValidation("apellidos","maxlen=24","ERROR: No puede exceder los 24 carácteres.");
+frmval.addValidation("apellidos","alpha_s","ERROR: Sólo puede tener carácteres alfabéticos y espacios.");
+
+frmval.addValidation("bday","req","ERROR: No se ha introducido la fecha de nacimiento.");
+frmval.addValidation("bday","regexp=/^(19|20)\d\d-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/","ERROR: No se ha introducido una fecha de nacimiento válida.");
+
+frmval.addValidation("phone","num","ERROR: Sólo puede contener carácteres numéricos.");
+frmval.addValidation("phone","maxlen=9","ERROR: Debe tener exáctamente 9 carácteres.");
+frmval.addValidation("phone","minlen=9","ERROR: Debe tener exáctamente 9 carácteres.");
+		break;
+	default:
+b_err = "ERROR: The birth date can't be greater than today.";
+
+frmval.addValidation("login","req","ERROR: Please write an user name.");
+frmval.addValidation("login","maxlen=12","ERROR: It can't be longer than 12 characters.");
+frmval.addValidation("login","minlen=4","ERROR: It can't be shorter than 4 characters.");
+
+frmval.addValidation("password","req","ERROR: Please write an user's password.");
+frmval.addValidation("password","maxlen=24","ERROR: It can't be longer than 24 characters.");
+frmval.addValidation("password","minlen=6","ERROR: It can't be shorter than 6 characters.");
+frmval.addValidation("repeat","eqelmnt=password","ERROR: The passwords don't match.");
+
+frmval.addValidation("email","req","ERROR: Please write an electronic mail.");
+frmval.addValidation("email","maxlen=32","ERROR: It can't be longer than 32 characters.");
+frmval.addValidation("email","email","ERROR: Please write a valid electronic mail.");
+
+frmval.addValidation("nombre","req","ERROR: Please write your name.");
+frmval.addValidation("nombre","maxlen=16","ERROR: It can't be longer than 16 characters.");
+frmval.addValidation("nombre","alpha_s","ERROR: There have to be just alphabetics and space characters.");
+
+frmval.addValidation("apellidos","req","ERROR: Please write your surname.");
+frmval.addValidation("apellidos","maxlen=24","ERROR: It can't be longer than 24 characters.");
+frmval.addValidation("apellidos","alpha_s","ERROR: There have to be just alphabetics and space characters.");
+
+frmval.addValidation("bday","req","ERROR: Please insert your birth date.");
+frmval.addValidation("bday","regexp=/^(19|20)\d\d-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/","ERROR: Please insert a valid birth date.");
+
+frmval.addValidation("phone","num","There have to be just numeric characters.");
+frmval.addValidation("phone","maxlen=9","ERROR: There have to be just 9 characters.");
+frmval.addValidation("phone","minlen=9","ERROR: There have to be just 9 characters.");
+		break;
+}

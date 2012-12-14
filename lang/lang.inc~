@@ -1,0 +1,15 @@
+<?php 
+$lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+switch ($lang) {
+	case "ca":
+		require('../lang/ca.inc');
+		break;
+	case "es":
+		require('../lang/es.inc');
+		break;
+	default:
+		require('../lang/en.inc');
+}
+
+require('../scripts/libreria.inc');
+?>

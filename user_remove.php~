@@ -1,0 +1,34 @@
+<?php 
+//if (isset($_GET['id'])) {
+	require('./dbhandlers/get_user.inc');
+
+/*	if (mysqli_num_rows($user) === 1){
+		$fila = mysqli_fetch_assoc($user);
+		LimpiaResultados($fila);*/
+
+		require('./scripts/libreria.inc');
+		drawHead($tusers_tdelete.$fila['nombre'].' '.$fila['apellidos']);
+
+		echo '<form action="./dbhandlers/user_remove.php" method="post">';
+		echo '<INPUT TYPE="hidden" NAME="login" value="'.$fila['login'].'">';
+		echo '<p>'.$tusers_del_q1.$fila['nombre'].' '.
+				$fila['apellidos'].$tusers_del_q2.'</p>';
+		echo '<p><INPUT TYPE="submit" NAME="yes" VALUE="'.$t_yes.'"> 
+				<INPUT TYPE="submit" NAME="no" VALUE="'.$t_no.'"></p></form>';
+
+		drawFoot();
+
+		mysqli_free_result($resultado);
+		mysqli_close($db);
+/*	} else {
+		mysqli_free_result($resultado);
+		mysqli_close($db);
+
+		$URL="./users.php"; 
+		header ("Location: $URL");
+	}
+} else {
+	$URL="./users.php"; 
+	header ("Location: $URL"); 
+}*/
+?>

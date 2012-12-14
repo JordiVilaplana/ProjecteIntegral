@@ -1,0 +1,21 @@
+<?php
+function goIndex() {header ("Location: ./"); }
+
+if (isset($_GET['page']) && isset($_GET['action'])) {
+	switch ($_GET['page']) {
+		case "users":
+			require ("./access/users.php");
+			break;
+		case "services":
+			require ("./access/services.php");
+			break;
+		case "info":
+			require ("./access/info.php");
+			break;
+		default:
+			goIndex();
+	}
+} else {
+	goIndex();
+}
+?>

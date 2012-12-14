@@ -1,0 +1,44 @@
+@media screen and (min-width:800px) {
+div#page {
+	min-width: 720px;
+	max-width: 1440px;
+	width: 90%;
+	margin: auto;
+	background-color: #F5F5FF;}
+div#contents {
+	min-width: 680px;
+	max-width: 1280px;
+	width: 95%;
+	margin: auto;
+	padding: 0.5em 1em;}
+div#map {
+	float: right;}
+}
+
+@media screen and (max-width:800px) {
+div#page {
+	width: 100%;
+	margin: auto;
+	background-color: #F5F5FF;}
+div#contents {
+	width: 95%;
+	margin: auto;
+	padding: 0.5em 1em;}
+}
+
+@media screen and (min-width:650px) {
+div#header {
+	height: 2.5em;}
+div#login {
+	top: 0.5em;}
+}
+@media screen and (max-width:650px) {
+div#header {
+	height: 4.5em;}
+div#login {
+	top: 2.5em;}
+}
+
+@media screen and (max-width:1024px) {
+th.fnac, th.direccion, th.phone, td.fnac, td.direccion, td.phone {display:none;}
+}

@@ -1,0 +1,28 @@
+<?php 
+	require('./dbcon.inc');
+
+	$consulta = "select * from users where ".$_GET['field']." like '%".$_GET['text']."%' and userType like '%".$_GET['userType']."%'";
+
+	$resultado = mysqli_query($db, $consulta);
+	CompruebaErrorMySQL('Error realizando la consulta', $db);
+	assert($resultado !== false);
+	$num = mysqli_num_rows($resultado);
+	if (mysqli_num_rows($resultado) > 0){
+		$count = 0;
+		echo '{ "aaData": [';
+		while ($fila = mysqli_fetch_assoc($resultado)){
+			LimpiaResultados($fila);
+			echo '["'.$fila['nombre'].'","'.$fila['apellidos'].'","'.$fila['email'].'","'.$fila['nacimiento'].'","'.$fila['direccion'].'","'.$fila['telefono'].'"]';
+			$count++;
+			if ($count <= $num)
+				echo ",";
+		}
+		echo '] }';
+	} else {
+		require('../lang/'.$_GET['lang'].'.inc');
+		echo $tusers_nofound;
+	}
+
+	mysqli_free_result($resultado);
+	mysqli_close($db);
+?>
