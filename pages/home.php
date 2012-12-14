@@ -5,9 +5,43 @@ drawHead($tindex_ptitle);
 
 <h2 class="titulo"><?php echo $tindex_title;?></h2>
 
-<div id="map">
-<iframe width="400" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps/ms?msa=0&amp;msid=209995606480606778619.0004d0ac401f253c709b6&amp;ie=UTF8&amp;ll=38.823805,-0.60295&amp;spn=0,0&amp;t=h&amp;output=embed"></iframe><br /><small>Ver <a href="https://maps.google.com/maps/ms?msa=0&amp;msid=209995606480606778619.0004d0ac401f253c709b6&amp;ie=UTF8&amp;ll=38.823805,-0.60295&amp;spn=0,0&amp;t=h&amp;source=embed" style="color:#0000FF;text-align:left">stile Peluqueros, S.L.</a> en un mapa más grande</small>
-</div>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script>
+window.onload = function() {
+	var myLatlng = new google.maps.LatLng(38.823805,-0.60295);
+	var mapOptions = {
+		zoom: 16,
+		center: myLatlng,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	}
+
+	var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+	var contentString = '<div id="content">'+
+		'<div id="siteNotice">'+
+		'</div>'+
+		'<h2 id="firstHeading" class="firstHeading">stile Peluqueros, S.L.</h2>'+
+		'<div id="bodyContent">'+
+		'<p>Aqui tenemos nuesta peluqueria.</p>'+
+		'</div>'+
+		'</div>';
+
+	var infowindow = new google.maps.InfoWindow({
+		content: contentString
+	});
+
+	var marker = new google.maps.Marker({
+		position: myLatlng,
+		map: map,
+		title: 'Uluru (Ayers Rock)'
+	});
+	google.maps.event.addListener(marker, 'click', function() {
+		infowindow.open(map,marker);
+	});
+}
+</script>
+
+<div id="map"></div>
 <div class="clear"></div>
 <!-- AddThis Button BEGIN -->
 <h3>Comparte en:</h3>

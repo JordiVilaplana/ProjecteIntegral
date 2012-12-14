@@ -101,3 +101,6 @@ div#menu ul li:hover ul li {
 	font-weight: bold;
 	text-indent: 1em;
 	text-align: left;}
+div#map {
+	width: 50%;
+	height: 400px;}
