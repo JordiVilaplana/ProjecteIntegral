@@ -25,7 +25,7 @@ drawHead($tindex_ptitle);
 <!-- AddThis Button END -->
 <hr />
 <div id="comments"> 
-	<h3>Comentarios</h3>
+	<h3 class="titulo">Comentarios</h3>
 <?php
 if (isset($_SESSION['nombre'])) {
 ?>

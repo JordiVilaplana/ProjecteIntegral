@@ -42,6 +42,5 @@ $servicios = getDBObjects("select * from services");
 require("./pages/services/datereg.php");
 
 $resultado->free();
-$clientes->free();
 $servicios->free();
 ?>

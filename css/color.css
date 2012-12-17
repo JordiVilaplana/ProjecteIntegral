@@ -1,6 +1,6 @@
 div#login, div#user_menu, div#menu li, div#user_menu li, input[type="submit"]:hover {
 	background-color: #FFFFFF;}
-div#menu li:hover, div#menu a:hover, div#user_menu li:hover, div#user_menu a:hover, input[type="submit"] {
+div#map, div#menu li:hover, div#menu a:hover, div#user_menu li:hover, div#user_menu a:hover, input[type="submit"] {
 	background-color: #0055CC;}
 div#header, div#footer {
 	background-color: #000099;}
