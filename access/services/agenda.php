@@ -38,25 +38,17 @@ function getDBObjects($consulta){
 	}
 }
 
-$usuario;
 $pastDates;
 $futureDates;
 
-if (isset($_GET['user'])) {
-	$usuario = getDBObjects("select * from users where login='".$_GET['user']."'");
-	$pastDates = getDBObjects("select * from agenda inner join services inner join users on agenda.worker = users.login and agenda.service = services.id where agenda.client='".$_GET['user']."' order by agenda.cod desc");
-	$futureDates = getDBObjects("select * from agenda inner join services inner join users on agenda.worker = users.login and agenda.service = services.id where agenda.client='".$_GET['user']."' order by agenda.cod asc");
+if (isset($_SESSION['login'])) {
+	$pastDates = getDBObjects("select * from agenda inner join services inner join users on agenda.client = users.login and agenda.service = services.id where agenda.worker='".$_SESSION['login']."' order by agenda.cod desc");
+	$futureDates = getDBObjects("select * from agenda inner join services inner join users on agenda.client = users.login and agenda.service = services.id where agenda.worker='".$_SESSION['login']."' order by agenda.cod asc");
 
-	if ($usuario->num_rows == 1){
-		while ($obj = $usuario->fetch_object()){
-			LimpiaResultados($obj);
-			require("./pages/users/profile.php");
-		}
-	} else require("./pages/error/user.php");
+	require("./pages/services/agenda.php");
 } else header("Location: ./?page=home");
 
 $resultado->free();
-$usuario->free();
 $pastDates->free();
 $futureDates->free();
 ?>

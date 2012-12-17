@@ -38,7 +38,7 @@ if (isset($_SESSION['login'])) {
 if ($_SESSION['userType'] === 'client')
 	echo '<li><a href="./?page=services&action=datereg">'.$GLOBALS['tmenu_cita'].'</a></li>';
 else if ($_SESSION['userType'] === 'worker')
-	echo '';
+	echo '<li><a href="./?page=services&action=agenda">Consultar agenda</a></li>';
 else if ($_SESSION['userType'] === 'admin')
 	echo '<li><a href="./?page=users&action=list">'.$GLOBALS['tmenu_users'].'</a></li>';
 
@@ -85,7 +85,7 @@ if (isset($_SESSION['login'])) {
 if ($_SESSION['userType'] === 'client')
 	echo '<li><a href="./?page=services&action=datereg">'.$GLOBALS['tmenu_cita'].'</a></li>';
 else if ($_SESSION['userType'] === 'worker')
-	echo '';
+	echo '<li><a href="./?page=services&action=agenda">Consultar agenda</a></li>';
 else if ($_SESSION['userType'] === 'admin')
 	echo '<li><a href="./?page=users&action=list">'.$GLOBALS['tmenu_users'].'</a></li>';
 }
