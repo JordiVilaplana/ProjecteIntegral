@@ -42,8 +42,8 @@ $pastDates;
 $futureDates;
 
 if (isset($_SESSION['login'])) {
-	$pastDates = getDBObjects("select * from agenda inner join services inner join users on agenda.client = users.login and agenda.service = services.id where agenda.worker='".$_SESSION['login']."' order by agenda.cod desc");
-	$futureDates = getDBObjects("select * from agenda inner join services inner join users on agenda.client = users.login and agenda.service = services.id where agenda.worker='".$_SESSION['login']."' order by agenda.cod asc");
+	$pastDates = getDBObjects("select * from agenda inner join services inner join users on agenda.client = users.login and agenda.service = services.id where agenda.worker='".$_SESSION['login']."' and agenda.date < CURRENT_DATE() order by agenda.cod desc");
+	$futureDates = getDBObjects("select * from agenda inner join services inner join users on agenda.client = users.login and agenda.service = services.id where agenda.worker='".$_SESSION['login']."' and agenda.date >= CURRENT_DATE() order by agenda.cod asc");
 
 	require("./pages/services/agenda.php");
 } else header("Location: ./?page=home");

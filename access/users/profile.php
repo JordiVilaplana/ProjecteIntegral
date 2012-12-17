@@ -44,8 +44,8 @@ $futureDates;
 
 if (isset($_GET['user'])) {
 	$usuario = getDBObjects("select * from users where login='".$_GET['user']."'");
-	$pastDates = getDBObjects("select * from agenda inner join services inner join users on agenda.worker = users.login and agenda.service = services.id where agenda.client='".$_GET['user']."' order by agenda.cod desc");
-	$futureDates = getDBObjects("select * from agenda inner join services inner join users on agenda.worker = users.login and agenda.service = services.id where agenda.client='".$_GET['user']."' order by agenda.cod asc");
+	$pastDates = getDBObjects("select * from agenda inner join services inner join users on agenda.worker = users.login and agenda.service = services.id where agenda.client='".$_GET['user']."' and agenda.date < CURRENT_DATE() order by agenda.cod desc");
+	$futureDates = getDBObjects("select * from agenda inner join services inner join users on agenda.worker = users.login and agenda.service = services.id where agenda.client='".$_GET['user']."' and agenda.date >= CURRENT_DATE() order by agenda.cod asc");
 
 	if ($usuario->num_rows == 1){
 		while ($obj = $usuario->fetch_object()){
