@@ -1,7 +1,7 @@
 <?php 
 	require('./dbcon.inc');
 
-	$consulta = "select * from users where ".$_GET['field']." like '%".$_GET['text']."%' and userType like '%".$_GET['userType']."%'";
+	$consulta = "select * from users";
 
 	$resultado = mysqli_query($db, $consulta);
 	CompruebaErrorMySQL('Error realizando la consulta', $db);
