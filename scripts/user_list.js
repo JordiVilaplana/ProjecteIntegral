@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	var oTable = $('#userslist').dataTable( {
+	var oTable = $('#userlist').dataTable( {
 		"bProcessing": true,
 		"bServerSide": true,
 		"sAjaxSource": 'dbhandlers/ajax_userlist.php'

@@ -2,7 +2,7 @@
 if (isset($_POST['alta'])) {
 	require('./dbcon.inc');
 
-	mysqli_query($db,"insert into users (login,password,email,nombre,apellidos,nacimiento) values ('".$_POST['login']."','".$_POST['password']."','".$_POST['email']."','".$_POST['nombre']."','".$_POST['apellidos']."','".$_POST['bday']."')");
+	mysqli_query($db,"insert into users (login,password,email,nombre,apellidos,nacimiento) values ('".$_POST['login']."','".$_POST['pass']."','".$_POST['email']."','".$_POST['nombre']."','".$_POST['apellidos']."','".$_POST['bday']."')");
 	CompruebaErrorMySQL('Error realizando el alta', $db);
 
 	if (isset($_POST['address'])) {

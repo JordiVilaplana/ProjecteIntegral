@@ -10,8 +10,9 @@ drawHead($tusers_ptitle);
 	@import "./css/datatables.css";
 </style>
 
-<table cellpadding="0" cellspacing="0" border="0" class="display" id="userslist">
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="userlist">
 <thead><tr>
+	<th>Usuario</th>
 	<th>Nombre</th>
 	<th>Apellidos</th>
 	<th>Email</th>
@@ -20,9 +21,10 @@ drawHead($tusers_ptitle);
 	<th>Teléfono</th>
 </tr><thead>
 <tbody><tr>
-	<td colspan="6" class="dataTables_empty">Carregant dades del servidor</td>
+	<td colspan="7" class="dataTables_empty">Carregant dades del servidor</td>
 </tr><tbody>
 <tfoot><tr>
+	<th>Usuario</th>
 	<th>Nombre</th>
 	<th>Apellidos</th>
 	<th>Email</th>

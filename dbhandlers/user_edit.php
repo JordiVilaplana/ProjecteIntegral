@@ -6,6 +6,12 @@ if (isset($_POST['modifica'])) {
 	CompruebaErrorMySQL('Error realizando la consulta!', $db);
 	mysqli_close($db);
 
+	session_start();
+	$_SESSION['login'] = $_POST['login'];
+	$_SESSION['nombre'] = $_POST['nombre'];
+	$_SESSION['apellidos'] = $_POST['apellidos'];
+	$_SESSION['userType'] = $_SESSION['userType'];
+
 	header ("Location: ../?page=users&action=profile&user=".$_POST['login']); 
 } else {
 	header ("Location: ../?page=home"); 
