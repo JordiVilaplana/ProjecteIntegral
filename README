@@ -1,0 +1,40 @@
++ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+	stile Peluqueros
++ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+	Projecte de desenvolupament web integral
+	per Jordi Vilaplana Martí
++ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+
+0. INTRODUCCIÓ
+   ¨¨¨¨¨¨¨¨¨¨¨
+	Aquest és un projecte de desenvolupament d'una aplicació web amb
+finalitat usable. En aquest cas, s'ha escollit desenvolupar una plataforma
+web per a la gestió de clients i cites d'una perruqueria amb funcionalitats
+públiques com registre públic d'usuaris, consulta d'informació sobre el
+negoci o solicitament de cites en xarxa.
+
+1. INSTAL·LACIÓ
+   ¨¨¨¨¨¨¨¨¨¨¨¨
+	Aquest projecte es pot veure en línia al Github (https://github.com/
+JordiVilaplana/ProjecteIntegral), descarregar el projecte git (https://
+github.com/JordiVilaplana/ProjecteIntegral.git) i descarregar en format zip
+(https://github.com/JordiVilaplana/ProjecteIntegral/archive/master.zip).
+
+	Una vegada descarregat, cal assegurar-se que el servidor web tinga
+total disponibilitat al nostre projecte (bé copiant el projecte a l'arrel
+del DocumentRoot, o bé creant un enllaç des de l'arrel del servidor al
+projecte).
+
+	Al gestor MySQL creem una nova base de dades anomenada "project" i
+ens asegurem que hi ha un usuari "root" amb contrasenya "root" amb tots els
+privilegis per a aquesta base de dades.
+
+	En aquesta base de dades executem el codi del fitxer "project.sql"
+per a crear les estructures de les taules. A més, es crearan els distints
+serveis de la perruqueria i es crearà un nou usuari "admin" amb contrasenya
+"admin" que tindrà credencials d'administrador.
+
+	Per a crear nous usuaris cal cumplimentar el formulari de registre
+de nou usuari de l'aplicació. Cada nou usuari que es registre tindrà auto-
+màticament la credencial de "client" i sols pot ser modificada aquesta cre-
+dencial per un usuari administrador.

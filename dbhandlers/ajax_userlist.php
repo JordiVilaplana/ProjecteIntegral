@@ -9,7 +9,7 @@
 	$aColumns = array( 'nombre', 'apellidos', 'email', 'nacimiento', 'direccion', 'telefono' );
 	
 	/* Indexed column (used for fast and accurate table cardinality) */
-	$sIndexColumn = "nombre";
+	$sIndexColumn = "email";
 	
 	/* DB table to use */
 	$sTable = "users";
@@ -33,13 +33,14 @@
 	{
 		header( $_SERVER['SERVER_PROTOCOL'] .' 500 Internal Server Error' );
 		die( $sErrorMessage );
+		FB::error($sErrorMessage);
 	}
 
 	
 	/* 
 	 * MySQL connection
 	 */
-	if ( ! $gaSql['link'] = mysql_pconnect( $gaSql['server'], $gaSql['user'], $gaSql['password']  ) )
+	if ( ! ( $gaSql['link'] = mysql_pconnect( $gaSql['server'], $gaSql['user'], $gaSql['password'] ) ) )
 	{
 		fatal_error( 'Could not open connection to server' );
 	}
